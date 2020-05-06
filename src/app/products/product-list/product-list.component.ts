@@ -18,7 +18,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
+    this.paramsSubscription = this.route.paramMap.subscribe(params => {
       const categoryId = params.get('id');
       if (categoryId) {
         this.fetchProducts(+categoryId);
