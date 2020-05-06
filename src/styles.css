@@ -107,7 +107,6 @@ a, a:hover {
 .page-wrapper {
   overflow: hidden;
   background: #e5e5e5;
-  padding-bottom: 8vh
 }
 
 .page-container {
@@ -117,7 +116,7 @@ a, a:hover {
 
 .main-content {
   padding-top: 116px;
-  min-height: 100vh
+  min-height: calc(100vh - 41px);
 }
 
 aside.menu-sidebar.d-none.d-lg-block.clr {
@@ -904,11 +903,6 @@ footer ul li {
     position: relative;
     top: 88px;
     padding-left: 0
-  }
-
-  .page-wrapper {
-    background: #e5e5e5;
-    padding-bottom: 12vh
   }
 
   .main-content {
