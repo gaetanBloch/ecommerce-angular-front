@@ -2,18 +2,23 @@
 
   <thead class="thead-dark">
   <tr>
+    <th></th>
     <th>Name</th>
-    <th>Price</th>
-    <th>Units in Stock</th>
+    <th class="text-center">Price</th>
+    <th class="text-center">Units in Stock</th>
   </tr>
   </thead>
 
   <tbody>
   <tr *ngFor="let product of products">
-    <td>{{ product.name}}</td>
-    <td>{{ product.unitPrice | currency:'USD'}}</td>
-    <td>{{ product.unitsInStock}}</td>
+    <td class="align-middle text-center">
+      <img src="{{ product.imageUrl }}" [alt]="product.name" height="50">
+    </td>
+    <td class="align-middle">{{ product.name}}</td>
+    <td class="align-middle text-center">{{ product.unitPrice | currency:'USD'}}</td>
+    <td class="align-middle text-center">{{ product.unitsInStock}}</td>
   </tr>
 
   </tbody>
 </table>
+
