@@ -1,24 +1,11 @@
-<table class="table table-striped table-hover">
+<div class="main-content">
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+      <div class="row">
 
-  <thead class="thead-dark">
-  <tr>
-    <th></th>
-    <th>Name</th>
-    <th class="text-center">Price</th>
-    <th class="text-center">Units in Stock</th>
-  </tr>
-  </thead>
+        <!-- Loop over the collection of products -->
 
-  <tbody>
-  <tr *ngFor="let product of products">
-    <td class="align-middle text-center">
-      <img src="{{ product.imageUrl }}" [alt]="product.name" height="50">
-    </td>
-    <td class="align-middle">{{ product.name}}</td>
-    <td class="align-middle text-center">{{ product.unitPrice | currency:'USD'}}</td>
-    <td class="align-middle text-center">{{ product.unitsInStock}}</td>
-  </tr>
-
-  </tbody>
-</table>
-
+      </div>
+    </div>
+  </div>
+</div>
