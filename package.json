@@ -4,7 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy-conf.json",
-    "build": "ng build",
+    "build": "ng build --prod",
+    "postbuild": "npm run deploy",
+    "predeploy": "rimraf ../ecommerce-spring-back/src/main/resources/static && mkdirp ../ecommerce-spring-back/src/main/resources/static",
+    "deploy": "copyfiles -f dist/ecommerce-angular-front/** ../ecommerce-spring-back/src/main/resources/static",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
