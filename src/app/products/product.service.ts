@@ -19,7 +19,7 @@ export class ProductService {
   }
 
   getProductList(): Observable<Product[]> {
-    return this.http.get<GetResponse>('/api/products')
+    return this.http.get<GetResponse>('/api/products?size=100')
       .pipe(
         map(result => result._embedded.products)
       );
