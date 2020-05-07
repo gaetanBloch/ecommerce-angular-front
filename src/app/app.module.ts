@@ -9,6 +9,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ProductCategoryMenuComponent } from './products/product-category-menu/product-category-menu.component';
 import { ProductSearchComponent } from './products/product-search/product-search.component';
 import { FormsModule } from '@angular/forms';
+import { ProductDetailsComponent } from './products/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
     ProductListComponent,
     PageNotFoundComponent,
     ProductCategoryMenuComponent,
-    ProductSearchComponent
+    ProductSearchComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
