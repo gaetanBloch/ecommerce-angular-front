@@ -4,11 +4,13 @@
       <div class="row">
 
         <table class="table table-bordered" *ngIf="cartItems.length > 0">
+
           <tr>
             <th width="20%">Product Image</th>
             <th width="50%">Product Detail</th>
             <th width="30%"></th>
           </tr>
+
           <tr *ngFor="let cartItem of cartItems">
             <td>
               <img src="{{ cartItem.imageUrl }}" class="img-fluid" width="150px">
@@ -22,6 +24,15 @@
                 <p>Quantity: {{ cartItem.quantity }}
                 <p>Subtotal: {{ cartItem.quantity * cartItem.unitPrice | currency }}</p>
               </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2"></td>
+            <td style="font-weight: bolder">
+              <p>Total Quantity: {{ totalQuantity }}</p>
+              <p>Shipping: FREE</p>
+              <p>Total Price: {{ totalPrice | currency }}</p>
             </td>
           </tr>
 
