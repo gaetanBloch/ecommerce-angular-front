@@ -1,7 +1,12 @@
 <div class="main-content">
   <div class="section-content section-content-p30">
 
-    <h4>Category: {{ categoryName }}</h4>
+    <div *ngIf="!searchMode">
+      <h4>Category: {{ categoryName }}</h4>
+    </div>
+    <div *ngIf="searchMode">
+      <h4>Search for: {{ searchKeyword }}</h4>
+    </div>
     <hr>
 
     <div class="container-fluid">
