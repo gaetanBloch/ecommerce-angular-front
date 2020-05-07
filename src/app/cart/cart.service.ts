@@ -54,7 +54,7 @@ export class CartService {
   }
 
   getCartItems(): CartItem[] {
-    return [...this.cartItems];
+    return this.cartItems;
   }
 
   decrementQuantity(cartItem: CartItem) {
