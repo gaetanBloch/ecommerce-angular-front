@@ -34,6 +34,10 @@ export class CartDetailsComponent implements OnInit, OnDestroy {
     this.cartService.addToCart(cartItem);
   }
 
+  onDecrementQuantity(cartItem: CartItem) {
+    this.cartService.decrementQuantity(cartItem);
+  }
+
   ngOnDestroy(): void {
     if (this.totalPriceSubscription) {
       this.totalPriceSubscription.unsubscribe();
