@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Subscription } from 'rxjs';
 
-import { ProductService } from '../product.service';
+import { GetResponseProducts, ProductService } from '../product.service';
 import { Product } from '../models/product.model';
 
 @Component({
@@ -13,10 +13,17 @@ import { Product } from '../models/product.model';
 export class ProductListComponent implements OnInit, OnDestroy {
   private readonly ID = 'id';
   private readonly KEYWORD = 'keyword';
+
   products: Product[];
-  categoryName: string;
   searchMode: boolean;
+  categoryName: string;
   searchKeyword: string;
+
+  // For pagination
+  pageNumber = 1;
+  pageSize = 10;
+  totalElements = 0;
+
   private paramsSubscription: Subscription;
 
   constructor(private productService: ProductService, private route: ActivatedRoute) {
@@ -32,7 +39,6 @@ export class ProductListComponent implements OnInit, OnDestroy {
         this.handleProducts(params);
       }
     });
-
   }
 
   ngOnDestroy(): void {
@@ -46,9 +52,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
   }
 
   private fetchSearchProducts(keyword: string): void {
-    this.productService.getProductsByKeyword(keyword).subscribe(products => {
-      this.products = products;
-    });
+    this.productService.getProductsByKeyword(keyword, this.pageNumber, this.pageSize)
+      .subscribe(this.handleResponseProducts.bind(this));
   }
 
   private handleProducts(params: ParamMap): void {
@@ -59,18 +64,25 @@ export class ProductListComponent implements OnInit, OnDestroy {
       this.fetchProducts();
       this.categoryName = 'All';
     }
+
+    this.pageNumber = 1;
   }
 
   private fetchProducts(): void {
-    this.productService.getProductList().subscribe(products => {
-      this.products = products;
-    });
+    this.productService.getProductList(this.pageNumber, this.pageSize)
+      .subscribe(this.handleResponseProducts.bind(this));
   }
 
   private fetchProductsByCategoryId(categoryId: number): void {
-    this.productService.getProductListByCategory(categoryId).subscribe(products => {
-      this.products = products;
-    });
+    this.productService.getProductListByCategory(categoryId, this.pageNumber, this.pageSize)
+      .subscribe(this.handleResponseProducts.bind(this));
+  }
+
+  private handleResponseProducts(response: GetResponseProducts) {
+    this.products = response._embedded.products;
+    this.pageNumber = response.page.number + 1;
+    this.pageSize = response.page.size;
+    this.totalElements = response.page.totalElements;
   }
 
   private fetchCategoryById(categoryId: number) {

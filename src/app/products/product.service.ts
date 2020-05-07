@@ -9,12 +9,12 @@ import { ProductCategory } from './models/product-category.model';
 export interface GetResponseProducts {
   _embedded: {
     products: Product[];
-    page: {
-      size: number;
-      totalElements: number;
-      totalPages: number;
-      number: number;
-    }
+  };
+  page: {
+    size: number;
+    totalElements: number;
+    totalPages: number;
+    number: number;
   };
 }
 
