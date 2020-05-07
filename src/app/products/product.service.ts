@@ -14,7 +14,7 @@ interface GetResponseProducts {
 
 interface GetResponseProductCategories {
   _embedded: {
-    productCategories: ProductCategory[]
+    product_categories: ProductCategory[]
   };
 }
 
@@ -38,7 +38,7 @@ export class ProductService {
     return this.http
       .get<GetResponseProductCategories>(`/api/product-categories`)
       .pipe(
-        map(result => result._embedded.productCategories)
+        map(result => result._embedded.product_categories)
       );
   }
 }
