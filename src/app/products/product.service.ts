@@ -6,9 +6,15 @@ import { map } from 'rxjs/operators';
 import { Product } from './models/product.model';
 import { ProductCategory } from './models/product-category.model';
 
-interface GetResponseProducts {
+export interface GetResponseProducts {
   _embedded: {
-    products: Product[]
+    products: Product[];
+    page: {
+      size: number;
+      totalElements: number;
+      totalPages: number;
+      number: number;
+    }
   };
 }
 
@@ -32,12 +38,17 @@ export class ProductService {
     return this.http.get<Product>(`${this.BASE_PRODUCTS_URL}/${productId}`);
   }
 
-  getProductList(): Observable<Product[]> {
-    return this.getProductsByCondition('?size=100');
+  getProductList(page: number, pageSize: number): Observable<GetResponseProducts> {
+    return this.getProductsByCondition('', page, pageSize);
   }
 
-  getProductListByCategory(categoryId: number): Observable<Product[]> {
-    return this.getProductsByCondition(`/search/category-id?id=${categoryId}`);
+  getProductListByCategory(categoryId: number, page: number, pageSize: number)
+    : Observable<GetResponseProducts> {
+    return this.getProductsByCondition(
+      `/search/category-id?id=${categoryId}`,
+      page,
+      pageSize
+    );
   }
 
   getProductCategories(): Observable<ProductCategory[]> {
@@ -53,15 +64,19 @@ export class ProductService {
       .get<ProductCategory>(`${this.BASE_PRODUCT_CATEGORIES_URL}/${id}`);
   }
 
-  getProductsByKeyword(keyword: string): Observable<Product[]> {
-    return this.getProductsByCondition(`/search/name-contains?name=${keyword}&size=100`);
+  getProductsByKeyword(keyword: string, page: number, pageSize: number)
+    : Observable<GetResponseProducts> {
+    return this.getProductsByCondition(
+      `/search/name-contains?name=${keyword}`,
+      page,
+      pageSize
+    );
   }
 
-  private getProductsByCondition(conditionUrl: string): Observable<Product[]> {
-    return this.http
-      .get<GetResponseProducts>(`${this.BASE_PRODUCTS_URL}${conditionUrl}`)
-      .pipe(
-        map(result => result._embedded.products)
-      );
+  private getProductsByCondition(conditionUrl: string, page: number, pageSize: number)
+    : Observable<GetResponseProducts> {
+    return this.http.get<GetResponseProducts>(
+      `${this.BASE_PRODUCTS_URL}${conditionUrl}?page=${page}&size${pageSize}`
+    );
   }
 }
