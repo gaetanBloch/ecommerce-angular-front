@@ -39,13 +39,13 @@ export class ProductService {
   }
 
   getProductList(page: number, pageSize: number): Observable<GetResponseProducts> {
-    return this.getProductsByCondition('', page, pageSize);
+    return this.getProductsByCondition('?', page, pageSize);
   }
 
   getProductListByCategory(categoryId: number, page: number, pageSize: number)
     : Observable<GetResponseProducts> {
     return this.getProductsByCondition(
-      `/search/category-id?id=${categoryId}`,
+      `/search/category-id?id=${categoryId}&`,
       page,
       pageSize
     );
@@ -67,7 +67,7 @@ export class ProductService {
   getProductsByKeyword(keyword: string, page: number, pageSize: number)
     : Observable<GetResponseProducts> {
     return this.getProductsByCondition(
-      `/search/name-contains?name=${keyword}`,
+      `/search/name-contains?name=${keyword}&`,
       page,
       pageSize
     );
@@ -76,7 +76,7 @@ export class ProductService {
   private getProductsByCondition(conditionUrl: string, page: number, pageSize: number)
     : Observable<GetResponseProducts> {
     return this.http.get<GetResponseProducts>(
-      `${this.BASE_PRODUCTS_URL}${conditionUrl}?page=${page}&size${pageSize}`
+      `${this.BASE_PRODUCTS_URL}${conditionUrl}page=${page}&size=${pageSize}`
     );
   }
 }

@@ -20,7 +20,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   searchKeyword: string;
 
   // For pagination
-  pageNumber = 1;
+  pageNumber = 0;
   pageSize = 10;
   totalElements = 0;
 
@@ -65,7 +65,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
       this.categoryName = 'All';
     }
 
-    this.pageNumber = 1;
+    this.pageNumber = 0;
   }
 
   private fetchProducts(): void {
@@ -80,7 +80,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   private handleResponseProducts(response: GetResponseProducts) {
     this.products = response._embedded.products;
-    this.pageNumber = response.page.number + 1;
+    this.pageNumber = response.page.number;
     this.pageSize = response.page.size;
     this.totalElements = response.page.totalElements;
   }
