@@ -4,6 +4,7 @@ import { ProductListComponent } from './products/product-list/product-list.compo
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
+  {path: 'categories/:id/:name', component: ProductListComponent},
   {path: 'categories/:id', component: ProductListComponent},
   {path: 'categories', component: ProductListComponent},
   {path: 'products', component: ProductListComponent},

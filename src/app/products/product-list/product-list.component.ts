@@ -12,6 +12,7 @@ import { Product } from '../models/product.model';
 })
 export class ProductListComponent implements OnInit, OnDestroy {
   products: Product[];
+  categoryName: string;
   private paramsSubscription: Subscription;
 
   constructor(private productService: ProductService, private route: ActivatedRoute) {
@@ -19,12 +20,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.paramsSubscription = this.route.paramMap.subscribe(params => {
-      const categoryId = params.get('id');
-      if (categoryId) {
-        this.fetchProducts(+categoryId);
-      } else {
-        this.fetchProducts(1);
-      }
+      params.has('id') ? this.fetchProducts(+params.get('id')) : this.fetchProducts(1);
+      this.categoryName = params.has('name') ? params.get('name') : 'Books';
     });
   }
 
