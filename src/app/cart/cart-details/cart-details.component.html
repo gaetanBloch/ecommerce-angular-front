@@ -21,9 +21,30 @@
             </td>
             <td>
               <div class="items">
-                <p>Quantity: {{ cartItem.quantity }}
-                <p>Subtotal: {{ cartItem.quantity * cartItem.unitPrice | currency }}</p>
+                <p>Quantity: </p>
+
+                <div class="row no-gutters">
+
+                  <div class="col">
+                    <button class="btn btn-primary btn-sm">
+                      <i class="fa fa-plus"></i>
+                    </button>
+                  </div>
+
+                  <div class="col ml-4 mr-2">
+                    {{ cartItem.quantity }}
+                  </div>
+
+                  <div class="col">
+                    <button class="btn btn-primary btn-sm"><i class="fa fa-minus"></i></button>
+                  </div>
+
+                  <div class="col-8"></div>
+
+                </div>
               </div>
+
+              <p class="mt-2">Subtotal: {{ cartItem.quantity * cartItem.unitPrice | currency }}</p>
             </td>
           </tr>
 
