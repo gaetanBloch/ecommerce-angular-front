@@ -11,8 +11,8 @@ import { Product } from '../models/product.model';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit, OnDestroy {
-  private static readonly ID = 'id';
-  private static readonly KEYWORD = 'keyword';
+  private readonly ID = 'id';
+  private readonly KEYWORD = 'keyword';
   products: Product[];
   categoryName: string;
   searchMode: boolean;
@@ -23,7 +23,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.paramsSubscription = this.route.paramMap.subscribe(params => {
-      this.searchMode = params.has(ProductListComponent.KEYWORD);
+      this.searchMode = params.has(this.KEYWORD);
       if (this.searchMode) {
         this.handleSearchProducts(params);
       } else {
@@ -40,19 +40,19 @@ export class ProductListComponent implements OnInit, OnDestroy {
   }
 
   private handleSearchProducts(params: ParamMap): void {
-    this.fetchSearchProducts(params.get(ProductListComponent.KEYWORD));
+    this.fetchSearchProducts(params.get(this.KEYWORD));
   }
 
   private fetchSearchProducts(keyword: string): void {
-    this.productService.searchProducts(keyword).subscribe(products => {
+    this.productService.getProductsByKeyword(keyword).subscribe(products => {
       this.products = products;
     });
   }
 
   private handleProducts(params: ParamMap): void {
-    if (params.has(ProductListComponent.ID)) {
-      this.fetchProductsByCategoryId(+params.get(ProductListComponent.ID));
-      this.fetchCategoryById(+params.get(ProductListComponent.ID));
+    if (params.has(this.ID)) {
+      this.fetchProductsByCategoryId(+params.get(this.ID));
+      this.fetchCategoryById(+params.get(this.ID));
     } else {
       this.fetchProducts();
       this.categoryName = 'All';
