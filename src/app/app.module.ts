@@ -11,6 +11,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ProductCategoryMenuComponent } from './products/product-category-menu/product-category-menu.component';
 import { ProductSearchComponent } from './products/product-search/product-search.component';
 import { ProductDetailsComponent } from './products/product-details/product-details.component';
+import { CartStatusComponent } from './cart/cart-status/cart-status.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ProductDetailsComponent } from './products/product-details/product-deta
     PageNotFoundComponent,
     ProductCategoryMenuComponent,
     ProductSearchComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CartStatusComponent
   ],
   imports: [
     BrowserModule,

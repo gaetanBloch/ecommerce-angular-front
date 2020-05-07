@@ -4,6 +4,8 @@ import { Subscription } from 'rxjs';
 
 import { GetResponseProducts, ProductService } from '../product.service';
 import { Product } from '../models/product.model';
+import { CartService } from '../../cart/cart.service';
+import { CartItem } from '../../cart/cart-item.model';
 
 @Component({
   selector: 'app-product-list',
@@ -27,19 +29,15 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   private paramsSubscription: Subscription;
 
-  constructor(private productService: ProductService, private route: ActivatedRoute) {
+  constructor(private productService: ProductService,
+              private cartService: CartService,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
     this.paramsSubscription = this.route.paramMap.subscribe(() => {
       this.listProducts();
     });
-  }
-
-  ngOnDestroy(): void {
-    if (this.paramsSubscription) {
-      this.paramsSubscription.unsubscribe();
-    }
   }
 
   listProducts() {
@@ -57,6 +55,16 @@ export class ProductListComponent implements OnInit, OnDestroy {
     this.pageSize = +event.target.value;
     this.pageNumber = 1;
     this.listProducts();
+  }
+
+  onAddToCart(product: Product) {
+    this.cartService.addToCart(new CartItem(product));
+  }
+
+  ngOnDestroy(): void {
+    if (this.paramsSubscription) {
+      this.paramsSubscription.unsubscribe();
+    }
   }
 
   private handleSearchProducts(keyword: string): void {
