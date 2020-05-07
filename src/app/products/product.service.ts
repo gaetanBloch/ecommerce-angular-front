@@ -26,7 +26,15 @@ export class ProductService {
   constructor(private http: HttpClient) {
   }
 
-  getProductList(categoryId: number): Observable<Product[]> {
+  getProductList(): Observable<Product[]> {
+    return this.http
+      .get<GetResponseProducts>(`/api/products?size=100`)
+      .pipe(
+        map(result => result._embedded.products)
+      );
+  }
+
+  getProductListByCategory(categoryId: number): Observable<Product[]> {
     return this.http
       .get<GetResponseProducts>(`/api/products/search/findByCategoryId?id=${categoryId}`)
       .pipe(

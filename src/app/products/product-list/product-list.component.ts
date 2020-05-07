@@ -20,8 +20,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.paramsSubscription = this.route.paramMap.subscribe(params => {
-      params.has('id') ? this.fetchProducts(+params.get('id')) : this.fetchProducts(1);
-      this.categoryName = params.has('name') ? params.get('name') : 'Books';
+      params.has('id') ? this.fetchProductsByCategory(+params.get('id')) : this.fetchProducts();
+      this.categoryName = params.has('name') ? params.get('name') : 'All';
     });
   }
 
@@ -31,8 +31,14 @@ export class ProductListComponent implements OnInit, OnDestroy {
     }
   }
 
-  private fetchProducts(categoryId: number): void {
-    this.productService.getProductList(categoryId).subscribe(products => {
+  private fetchProducts(): void {
+    this.productService.getProductList().subscribe(products => {
+      this.products = products;
+    });
+  }
+
+  private fetchProductsByCategory(categoryId: number): void {
+    this.productService.getProductListByCategory(categoryId).subscribe(products => {
       this.products = products;
     });
   }
