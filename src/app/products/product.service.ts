@@ -36,7 +36,7 @@ export class ProductService {
 
   getProductListByCategory(categoryId: number): Observable<Product[]> {
     return this.http
-      .get<GetResponseProducts>(`/api/products/search/findByCategoryId?id=${categoryId}`)
+      .get<GetResponseProducts>(`/api/products/search/category-id?id=${categoryId}`)
       .pipe(
         map(result => result._embedded.products)
       );
