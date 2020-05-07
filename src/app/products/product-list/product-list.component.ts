@@ -26,7 +26,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
     this.paramsSubscription = this.route.paramMap.subscribe(params => {
       this.searchMode = params.has(this.KEYWORD);
       if (this.searchMode) {
-        this.searchKeyword = params.get(this.KEYWORD) === '' ?
+        this.searchKeyword = params.get(this.KEYWORD).trim() === '' ?
           'All' : params.get(this.KEYWORD).trim();
         this.fetchSearchProducts(this.searchKeyword);
       } else {

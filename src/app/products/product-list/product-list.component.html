@@ -29,6 +29,11 @@
 
         </div>
 
+        <!-- When products are empty then display a message -->
+        <div class="alert alert-warning col-md-12" *ngIf="products?.length === 0" role="alert">
+          No products found.
+        </div>
+
       </div>
     </div>
   </div>
