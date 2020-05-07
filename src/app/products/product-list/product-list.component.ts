@@ -22,7 +22,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   // For pagination
   pageNumber = 1;
-  pageSize = 10;
+  pageSize = 5;
   totalElements = 0;
 
   private paramsSubscription: Subscription;
@@ -51,6 +51,12 @@ export class ProductListComponent implements OnInit, OnDestroy {
     } else {
       this.handleProducts(this.route.snapshot.paramMap);
     }
+  }
+
+  onUpdatePageSize(event): void {
+    this.pageSize = +event.target.value;
+    this.pageNumber = 1;
+    this.listProducts();
   }
 
   private handleSearchProducts(keyword: string): void {
