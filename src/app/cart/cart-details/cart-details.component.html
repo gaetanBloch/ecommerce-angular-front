@@ -46,6 +46,10 @@
                 </div>
               </div>
 
+              <button class="btn btn-danger bt-sm mt-3" (click)="onRemove(cartItem)">
+                <i class="fa fa-trash-alt"></i>Remove
+              </button>
+
               <p class="mt-2">Subtotal: {{ cartItem.quantity * cartItem.unitPrice | currency }}</p>
             </td>
           </tr>
