@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="row">
 
-        <table class="table table-bordered">
+        <table class="table table-bordered" *ngIf="cartItems.length > 0">
           <tr>
             <th width="20%">Product Image</th>
             <th width="50%">Product Detail</th>
@@ -26,6 +26,11 @@
           </tr>
 
         </table>
+
+        <!-- When products are empty then display a message -->
+        <div class="alert alert-warning col-md-12" *ngIf="cartItems?.length === 0" role="alert">
+          No product in the cart.
+        </div>
 
       </div>
     </div>
