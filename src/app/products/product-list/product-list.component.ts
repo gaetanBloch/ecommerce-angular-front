@@ -26,9 +26,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
     this.paramsSubscription = this.route.paramMap.subscribe(params => {
       this.searchMode = params.has(this.KEYWORD);
       if (this.searchMode) {
-        this.searchKeyword = params.get(this.KEYWORD).trim() === '' ?
-          'All' : params.get(this.KEYWORD).trim();
-        this.fetchSearchProducts(this.searchKeyword);
+        this.searchKeyword = params.get(this.KEYWORD) === '' ? 'All' : params.get(this.KEYWORD);
+        this.handleSearchProducts(params);
       } else {
         this.handleProducts(params);
       }
@@ -40,6 +39,10 @@ export class ProductListComponent implements OnInit, OnDestroy {
     if (this.paramsSubscription) {
       this.paramsSubscription.unsubscribe();
     }
+  }
+
+  handleSearchProducts(params: ParamMap): void {
+    this.fetchSearchProducts(params.get(this.KEYWORD));
   }
 
   private fetchSearchProducts(keyword: string): void {
