@@ -20,18 +20,15 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.paramsSubscription = this.route.paramMap.subscribe(params => {
-      params.has('id') ? this.fetchProductsByCategoryId(+params.get('id')) : this.fetchProducts();
 
-      if (params.has('name')) {
-        this.categoryName = params.get('name');
-      } else if (params.has('id')) {
-        this.productService.getProductCategoryById(+params.get('id'))
-          .subscribe(categoryProduct => {
-            this.categoryName = categoryProduct.categoryName;
-          });
+      if (params.has('id')) {
+        this.fetchProductsByCategoryId(+params.get('id'));
+        this.fetchCategoryById(+params.get('id'));
       } else {
+        this.fetchProducts();
         this.categoryName = 'All';
       }
+
     });
   }
 
@@ -50,6 +47,12 @@ export class ProductListComponent implements OnInit, OnDestroy {
   private fetchProductsByCategoryId(categoryId: number): void {
     this.productService.getProductListByCategory(categoryId).subscribe(products => {
       this.products = products;
+    });
+  }
+
+  private fetchCategoryById(categoryId: number) {
+    this.productService.getProductCategoryById(categoryId).subscribe(categoryProduct => {
+      this.categoryName = categoryProduct.categoryName;
     });
   }
 }
