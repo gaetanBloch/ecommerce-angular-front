@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { ProductService } from '../product.service';
@@ -11,8 +11,11 @@ import { Product } from '../models/product.model';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit, OnDestroy {
+  private static readonly ID = 'id';
+  private static readonly KEYWORD = 'keyword';
   products: Product[];
   categoryName: string;
+  searchMode: boolean;
   private paramsSubscription: Subscription;
 
   constructor(private productService: ProductService, private route: ActivatedRoute) {
@@ -20,21 +23,39 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.paramsSubscription = this.route.paramMap.subscribe(params => {
-
-      if (params.has('id')) {
-        this.fetchProductsByCategoryId(+params.get('id'));
-        this.fetchCategoryById(+params.get('id'));
+      this.searchMode = params.has(ProductListComponent.KEYWORD);
+      if (this.searchMode) {
+        this.handleSearchProducts(params);
       } else {
-        this.fetchProducts();
-        this.categoryName = 'All';
+        this.handleProducts(params);
       }
-
     });
+
   }
 
   ngOnDestroy(): void {
     if (this.paramsSubscription) {
       this.paramsSubscription.unsubscribe();
+    }
+  }
+
+  private handleSearchProducts(params: ParamMap): void {
+    this.fetchSearchProducts(params.get(ProductListComponent.KEYWORD));
+  }
+
+  private fetchSearchProducts(keyword: string): void {
+    this.productService.searchProducts(keyword).subscribe(products => {
+      this.products = products;
+    });
+  }
+
+  private handleProducts(params: ParamMap): void {
+    if (params.has(ProductListComponent.ID)) {
+      this.fetchProductsByCategoryId(+params.get(ProductListComponent.ID));
+      this.fetchCategoryById(+params.get(ProductListComponent.ID));
+    } else {
+      this.fetchProducts();
+      this.categoryName = 'All';
     }
   }
 
@@ -51,8 +72,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
   }
 
   private fetchCategoryById(categoryId: number) {
-    this.productService.getProductCategoryById(categoryId).subscribe(categoryProduct => {
-      this.categoryName = categoryProduct.categoryName;
+    this.productService.getProductCategoryById(categoryId).subscribe(productCategory => {
+      this.categoryName = productCategory.categoryName;
     });
   }
 }

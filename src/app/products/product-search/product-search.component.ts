@@ -16,7 +16,6 @@ export class ProductSearchComponent implements OnInit {
   }
 
   onSearch(form: NgForm): void {
-    console.log(`value=${form.value.search}`);
     this.router.navigate(['/search', form.value.search]);
   }
 }
