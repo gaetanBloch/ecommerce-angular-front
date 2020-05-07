@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Product } from './product.model';
+import { Product } from './models/product.model';
 
 interface GetResponse {
   _embedded: {
