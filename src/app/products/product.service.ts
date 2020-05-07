@@ -28,6 +28,10 @@ export class ProductService {
   constructor(private http: HttpClient) {
   }
 
+  getProduct(productId: string): Observable<Product> {
+    return this.http.get<Product>(`${this.BASE_PRODUCTS_URL}/${productId}`);
+  }
+
   getProductList(): Observable<Product[]> {
     return this.getProductsByCondition('?size=100');
   }
