@@ -39,7 +39,7 @@ export class CartService {
 
   }
 
-  private computeCartTotals(): void {
+  computeCartTotals(): void {
     let totalPrice = 0;
     let totalQuantity = 0;
 
@@ -51,5 +51,9 @@ export class CartService {
     // Publish the new totals
     this.totalPrice.next(totalPrice);
     this.totalQuantity.next(totalQuantity);
+  }
+
+  getCartItems(): CartItem[] {
+    return [...this.cartItems];
   }
 }
