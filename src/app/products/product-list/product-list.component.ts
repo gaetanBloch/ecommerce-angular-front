@@ -18,9 +18,10 @@ export class ProductListComponent implements OnInit, OnDestroy {
   searchMode: boolean;
   categoryName: string;
   searchKeyword: string;
+  previousCategoryId: number;
 
   // For pagination
-  pageNumber = 0;
+  pageNumber = 1;
   pageSize = 10;
   totalElements = 0;
 
@@ -30,14 +31,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.paramsSubscription = this.route.paramMap.subscribe(params => {
-      this.searchMode = params.has(this.KEYWORD);
-      if (this.searchMode) {
-        this.searchKeyword = params.get(this.KEYWORD) === '' ? 'All' : params.get(this.KEYWORD);
-        this.handleSearchProducts(params);
-      } else {
-        this.handleProducts(params);
-      }
+    this.paramsSubscription = this.route.paramMap.subscribe(() => {
+      this.listProducts();
     });
   }
 
@@ -47,40 +42,62 @@ export class ProductListComponent implements OnInit, OnDestroy {
     }
   }
 
-  handleSearchProducts(params: ParamMap): void {
-    this.fetchSearchProducts(params.get(this.KEYWORD));
+  listProducts() {
+    this.searchMode = this.route.snapshot.paramMap.has(this.KEYWORD);
+    if (this.searchMode) {
+      const keyword = this.route.snapshot.paramMap.get(this.KEYWORD);
+      this.searchKeyword = keyword === '' ? 'All' : keyword;
+      this.handleSearchProducts(keyword);
+    } else {
+      this.handleProducts(this.route.snapshot.paramMap);
+    }
+  }
+
+  private handleSearchProducts(keyword: string): void {
+    this.fetchSearchProducts(keyword);
   }
 
   private fetchSearchProducts(keyword: string): void {
-    this.productService.getProductsByKeyword(keyword, this.pageNumber, this.pageSize)
+    this.productService.getProductsByKeyword(keyword, this.pageNumber - 1, this.pageSize)
       .subscribe(this.handleResponseProducts.bind(this));
   }
 
   private handleProducts(params: ParamMap): void {
     if (params.has(this.ID)) {
-      this.fetchProductsByCategoryId(+params.get(this.ID));
-      this.fetchCategoryById(+params.get(this.ID));
+      const currentCategoryId = +params.get(this.ID);
+
+      // Check if we have a different category than previous
+      // Note: Angular will reuse a component if it is currently being viewed
+      // If we have a different category id than previous then set thePageNumber back to 1
+      if (this.previousCategoryId !== currentCategoryId) {
+        this.pageNumber = 1;
+      }
+      this.previousCategoryId = currentCategoryId;
+
+      this.fetchProductsByCategoryId(currentCategoryId);
+      this.fetchCategoryById(currentCategoryId);
+
     } else {
       this.fetchProducts();
       this.categoryName = 'All';
     }
-
-    this.pageNumber = 0;
   }
 
   private fetchProducts(): void {
-    this.productService.getProductList(this.pageNumber, this.pageSize)
+    this.productService.getProductList(this.pageNumber - 1, this.pageSize)
       .subscribe(this.handleResponseProducts.bind(this));
   }
 
   private fetchProductsByCategoryId(categoryId: number): void {
-    this.productService.getProductListByCategory(categoryId, this.pageNumber, this.pageSize)
-      .subscribe(this.handleResponseProducts.bind(this));
+    this.productService.getProductListByCategory(categoryId, this.pageNumber - 1, this.pageSize)
+      .subscribe(response => {
+        this.handleResponseProducts(response);
+      });
   }
 
   private handleResponseProducts(response: GetResponseProducts) {
     this.products = response._embedded.products;
-    this.pageNumber = response.page.number;
+    this.pageNumber = response.page.number + 1;
     this.pageSize = response.page.size;
     this.totalElements = response.page.totalElements;
   }
