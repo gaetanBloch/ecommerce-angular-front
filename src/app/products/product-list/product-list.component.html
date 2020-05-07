@@ -16,14 +16,14 @@
         <div class="col-md-3" *ngFor="let product of products">
 
           <div class="product-box">
-            <a href="#" style="display: block">
+            <a routerLink="/products/{{ product.id }}">
               <img src="{{ product.imageUrl }}" class="img-fluid">
             </a>
-            <a href="#" style="display: block">
+            <a routerLink="/products/{{ product.id }}">
               <h1>{{ product.name }}</h1>
             </a>
             <div class="price">{{ product.unitPrice | currency }}</div>
-            <a href="#" class="btn primary-btn">Add to cart</a>
+            <a href="#" class="btn primary-btn" style="display: inline-block">Add to cart</a>
           </div>
 
         </div>
