@@ -7,13 +7,15 @@ import { ProductListComponent } from './products/product-list/product-list.compo
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProductCategoryMenuComponent } from './products/product-category-menu/product-category-menu.component';
+import { ProductSearchComponent } from './products/product-search/product-search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
     PageNotFoundComponent,
-    ProductCategoryMenuComponent
+    ProductCategoryMenuComponent,
+    ProductSearchComponent
   ],
   imports: [
     BrowserModule,
