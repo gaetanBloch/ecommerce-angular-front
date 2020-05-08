@@ -37,6 +37,10 @@ To see the back-end of this application implemented with Java Spring, see [here]
 
 ![Mouse Pads](https://i.imgur.com/xzOjsyK.png)
 
+### Search Results
+
+![Search Results](https://i.imgur.com/HrgqcOc.png)
+
 ### Product Details
 
 ![Product Details](https://i.imgur.com/xbebWY0.png)
