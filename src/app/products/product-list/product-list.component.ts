@@ -24,7 +24,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   // For pagination
   pageNumber = 1;
-  pageSize = 5;
+  pageSize = 4;
   totalElements = 0;
 
   private paramsSubscription: Subscription;
