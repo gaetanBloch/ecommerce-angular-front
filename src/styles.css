@@ -52,6 +52,10 @@ p {
   margin: 0
 }
 
+i {
+  margin-right: 5px;
+}
+
 h1, h2, h3, h4, h5, h6 {
   color: #333;
   font-weight: 700;

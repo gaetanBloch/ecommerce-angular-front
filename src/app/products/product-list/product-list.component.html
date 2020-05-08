@@ -23,7 +23,9 @@
               <h1>{{ product.name }}</h1>
             </a>
             <div class="price">{{ product.unitPrice | currency }}</div>
-            <button class="mt-2 btn btn-primary" (click)="onAddToCart(product)">Add to cart</button>
+            <button class="mt-2 btn btn-primary" (click)="onAddToCart(product)">
+              <i class="fa fa-shopping-cart"></i>Add to cart
+            </button>
           </div>
 
         </div>

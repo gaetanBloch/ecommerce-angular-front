@@ -8,7 +8,9 @@
 
           <h3>{{ product?.name }}</h3>
           <div class="price">{{ product?.unitPrice | currency }}</div>
-          <button class="mt-2 btn btn-primary" (click)="onAddToCart(product)">Add to cart</button>
+          <button class="mt-2 btn btn-primary" (click)="onAddToCart(product)">
+            <i class="fa fa-shopping-cart"></i>Add to cart
+          </button>
           <hr>
           <h4>Product Description</h4>
           <p>{{ product?.description }}</p>
