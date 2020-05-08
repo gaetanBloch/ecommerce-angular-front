@@ -1,27 +1,54 @@
-# EcommerceAngularFront
+# E-commerce Application Front-End
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.3.
+The application was built using [Angular 9](https://angular.io/), [Bootstrap 4](https://getbootstrap.com/docs/4.4/getting-started/introduction/) and [ng-boostrap](https://ng-bootstrap.github.io/#/home). It is an Angular based front-end for the e-commerce Application called **luv2shop**. 
 
-## Development server
+**The Full Stack Application with Angular front-end was deployed on Cloud Foundry, to access it, click [here](https://gbloch-luv2shop.cfapps.io/).**
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+To see the back-end of this application implemented with Java Spring, see [here](https://github.com/gaetanBloch/ecommerce-spring-back).
 
-## Code scaffolding
+## Running Application Process on your computer
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Download the application by Clicking [this link](https://github.com/gaetanBloch/ecommerce-angular-front/archive/master.zip)
+2. Unzip the application
+3. Download and Install [node.js](https://nodejs.org/en/download/) 
+4. Open a terminal
+5. Make sure you have the latest version of the Angular CLI, if not:
+    - Run `npm uninstall -g angular-cli @angular/cli`
+    - Run `npm cache clean --force`
+    - Run  `npm install -g @angular/cli`
+6. Move to the root of the application
+7. Run `npm install`
+8. Run `npm start`
+9. Navigate to http://localhost:4200/ with your favourite browser
 
-## Build
+**Warning! You will get Errors if you are not running a back-end on http://localhost:8080 with the right REST API like [here](https://github.com/gaetanBloch/ecommerce-spring-back).**
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Application
 
-## Running unit tests
+### All Products
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+![All Products](https://i.imgur.com/uOhOmrw.png)
 
-## Running end-to-end tests
+### Books
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+![Books](https://i.imgur.com/cmP4MOO.png)
 
-## Further help
+### Mouse Pads
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+![Mouse Pads](https://i.imgur.com/xzOjsyK.png)
+
+### Product Details
+
+![Product Details](https://i.imgur.com/xbebWY0.png)
+
+### Cart Price
+
+![Cart Price](https://i.imgur.com/5hgaB1u.png)
+
+### Cart Summary
+
+![Cart Summary](https://i.imgur.com/WMvoIiF.png)
+
+### 404 NOT FOUND
+
+![404 NOT FOUND](https://i.imgur.com/CfT5Aks.png)
