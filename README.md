@@ -2,9 +2,9 @@
 
 The application was built using [Angular 9](https://angular.io/), [Bootstrap 4](https://getbootstrap.com/docs/4.4/getting-started/introduction/) and [ng-boostrap](https://ng-bootstrap.github.io/#/home). It is an Angular based front-end for the e-commerce Application called **luv2shop**. 
 
-**The Full Stack Application with Angular front-end was deployed on Cloud Foundry, to access it, click [here](https://gbloch-luv2shop.cfapps.io/).**
+**The Full Stack Application with Spring back-end was deployed on Cloud Foundry, to access it, click [here](https://gbloch-luv2shop.cfapps.io/).**
 
-**The Full Stack Application with Angular front-end was deployed on Azure, to access it, click [here](https://gbloch-luv2shop.azurewebsites.net/).**
+**The Full Stack Application with Angular back-end was deployed on Azure, to access it, click [here](https://gbloch-luv2shop.azurewebsites.net/).**
 
 To see the back-end of this application implemented with Java Spring, see [here](https://github.com/gaetanBloch/ecommerce-spring-back).
 
