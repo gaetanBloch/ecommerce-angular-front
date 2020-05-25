@@ -8,30 +8,30 @@
         <div formGroupName="customer" class="form-area">
           <h3>Customer</h3>
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <label for="firstName">First Name</label>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-9">
               <div class="input-space">
                 <input id="firstName" type="text" formControlName="firstName">
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <label for="lastName">Last Name</label>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-9">
               <div class="input-space">
                 <input id="lastName" type="text" formControlName="lastName">
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <label for="email">Email</label>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-9">
               <div class="input-space">
                 <input id="email" type="email" formControlName="email">
               </div>
@@ -43,40 +43,40 @@
         <div formGroupName="shippingAddress" class="form-area">
           <h3>Shipping Address</h3>
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <label for="shippingStreet">Street</label>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-9">
               <div class="input-space">
                 <input id="shippingStreet" type="text" formControlName="street">
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <label for="shppingCity">City</label>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-9">
               <div class="input-space">
                 <input id="shppingCity" type="text" formControlName="city">
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <label for="shippingZipCode">ZIP Code</label>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-9">
               <div class="input-space">
                 <input id="shippingZipCode" type="email" formControlName="zipCode">
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <label for="shippingCountry">country</label>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-9">
               <div class="input-space">
                 <select id="shippingCountry" formControlName="country">
                   <option value="france">France</option>
@@ -98,40 +98,40 @@
         <div formGroupName="billingAddress" class="form-area">
           <h3>Billing Address</h3>
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <label for="billingStreet">Street</label>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-9">
               <div class="input-space">
                 <input id="billingStreet" type="text" formControlName="street">
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <label for="billingCity">City</label>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-9">
               <div class="input-space">
                 <input id="billingCity" type="text" formControlName="city">
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <label for="billingZipCode">ZIP Code</label>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-9">
               <div class="input-space">
                 <input id="billingZipCode" type="email" formControlName="zipCode">
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <label for="billingCountry">country</label>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-9">
               <div class="input-space">
                 <select id="billingCountry" formControlName="country">
                   <option value="france">France</option>
@@ -139,6 +139,78 @@
               </div>
             </div>
           </div>
+        </div>
+
+        <!-- Credit card info -->
+        <div formGroupName="creditCard" class="form-area">
+          <h3>Credit Card</h3>
+          <div class="row">
+            <div class="col-md-3">
+              <label for="cardType">Card Type</label>
+            </div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <select id="cardType" formControlName="cardType">
+                  <option value="visa">Visa</option>
+                  <option value="masterCard">MasterCard</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <label for="cardHolder">Card Holder Name</label>
+            </div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input id="cardHolder" type="text" formControlName="cardHolder">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <label for="cardNumber">Card Number</label>
+            </div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input id="cardNumber" type="number" formControlName="cardNumber">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <label for="expirationMonth">Expiration Month</label>
+            </div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <select id="expirationMonth" formControlName="expirationMonth">
+                  <option value="todo">TODO</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <label for="expirationYear">Expiration Year</label>
+            </div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <select id="expirationYear" formControlName="expirationYear">
+                  <option value="todo">TODO</option>
+                </select>
+              </div>
+            </div>
+          </div><div class="row">
+          <div class="col-md-3">
+            <label for="securityCode">Security Code</label>
+          </div>
+          <div class="col-md-9">
+            <div class="input-space">
+              <input id="securityCode" type="number" formControlName="securityCode">
+            </div>
+          </div>
+        </div>
+
         </div>
 
         <!-- Submit button -->
