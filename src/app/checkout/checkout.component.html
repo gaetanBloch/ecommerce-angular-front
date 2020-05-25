@@ -44,41 +44,88 @@
           <h3>Shipping Address</h3>
           <div class="row">
             <div class="col-md-2">
-              <label for="street">Street</label>
+              <label for="shippingStreet">Street</label>
             </div>
             <div class="col-md-10">
               <div class="input-space">
-                <input id="street" type="text" formControlName="street">
+                <input id="shippingStreet" type="text" formControlName="street">
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-2">
-              <label for="city">City</label>
+              <label for="shppingCity">City</label>
             </div>
             <div class="col-md-10">
               <div class="input-space">
-                <input id="city" type="text" formControlName="city">
+                <input id="shppingCity" type="text" formControlName="city">
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-2">
-              <label for="zipCode">ZIP Code</label>
+              <label for="shippingZipCode">ZIP Code</label>
             </div>
             <div class="col-md-10">
               <div class="input-space">
-                <input id="zipCode" type="email" formControlName="zipCode">
+                <input id="shippingZipCode" type="email" formControlName="zipCode">
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-2">
-              <label for="country">country</label>
+              <label for="shippingCountry">country</label>
             </div>
             <div class="col-md-10">
               <div class="input-space">
-                <select id="country" formControlName="country">
+                <select id="shippingCountry" formControlName="country">
+                  <option value="france">France</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Billing address form group -->
+        <div formGroupName="billingAddress" class="form-area">
+          <h3>Billing Address</h3>
+          <div class="row">
+            <div class="col-md-2">
+              <label for="billingStreet">Street</label>
+            </div>
+            <div class="col-md-10">
+              <div class="input-space">
+                <input id="billingStreet" type="text" formControlName="street">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2">
+              <label for="billingCity">City</label>
+            </div>
+            <div class="col-md-10">
+              <div class="input-space">
+                <input id="billingCity" type="text" formControlName="city">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2">
+              <label for="billingZipCode">ZIP Code</label>
+            </div>
+            <div class="col-md-10">
+              <div class="input-space">
+                <input id="billingZipCode" type="email" formControlName="zipCode">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2">
+              <label for="billingCountry">country</label>
+            </div>
+            <div class="col-md-10">
+              <div class="input-space">
+                <select id="billingCountry" formControlName="country">
                   <option value="france">France</option>
                 </select>
               </div>
@@ -87,7 +134,7 @@
         </div>
 
         <!-- Submit button -->
-        <div class="text-center">
+        <div class="text-center mb-3">
           <button type="submit" class="btn btn-info">Purchase</button>
         </div>
 
