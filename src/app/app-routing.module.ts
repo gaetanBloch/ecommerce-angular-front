@@ -4,8 +4,10 @@ import { ProductListComponent } from './products/product-list/product-list.compo
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProductDetailsComponent } from './products/product-details/product-details.component';
 import { CartDetailsComponent } from './cart/cart-details/cart-details.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 const routes: Routes = [
+  {path: 'checkout', component: CheckoutComponent},
   {path: 'cart', component: CartDetailsComponent},
   {path: 'search/:keyword', component: ProductListComponent},
   {path: 'categories/:id', component: ProductListComponent},
