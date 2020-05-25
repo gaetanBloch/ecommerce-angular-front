@@ -86,6 +86,14 @@
           </div>
         </div>
 
+        <!-- Add Checkbox to copy the shipping to billing-->
+        <div class="input-space">
+          <label class="au-checkbox">
+            <input type="checkbox" (change)="copyShippingToBilling($event)">
+            <span class="au-checkmark"></span>Billing address same as shipping address
+          </label>
+        </div>
+
         <!-- Billing address form group -->
         <div formGroupName="billingAddress" class="form-area">
           <h3>Billing Address</h3>
@@ -134,7 +142,7 @@
         </div>
 
         <!-- Submit button -->
-        <div class="text-center mb-3">
+        <div class="text-center mb-5">
           <button type="submit" class="btn btn-info">Purchase</button>
         </div>
 
